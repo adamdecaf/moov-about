@@ -1,0 +1,14 @@
+# mac
+.DS_Store
+
+# VSCode ignore
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.vscode/launch.json
+
+./nginx/cache/
+./nginx/run/
