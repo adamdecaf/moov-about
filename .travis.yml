@@ -1,0 +1,23 @@
+sudo: true
+
+services:
+  - docker
+
+os:
+  - linux
+
+script:
+  - make build
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Pe7k2IK6MAvPajy/Zhtd0S6nc1SnJc7Wgxn6VudKnTJ1Je3pLf0OUdoG8wAFEElnKAWCFpi72F0FcUZjEOfrC20nbu708RahtDEHwNDLp4ut4zpVf97dN6+ky+9cTV1O41ubYJLx+1LtKiT7hTHF4zMqVqr1EyOaGR5WmrtUWcPnNY2/+5RBgGvsww55Po/5bDmNaLwiWQav6zF0eexl/Gkm9tEKAn012q27MrEGpH0tCV1L/XtcKK+WvzErmtpMp1BIaIVngj8kFG764Q5q3IKF/b/MFcATp+Gc2vxbrZb1PgveoLfLkRmb2ip/BOZiRvZMrL4tu+9KAsszGWoKXCS4giIJ+xGuNQAczw/y0ghgYggwcqFDMQCLyOcWeg6V3b37LImtOIzxt2uaqjlc2pCKJ5aC0Wsbo//TNlOK5nDeEqZultmm/EByw5W9l4bppqFjR8odclNBqLV9fjZVPFTfxKbZjtSzMsjQUq8Ri+gWW8TAj20xvmqdkKzmm5JRX5wehsclaLdQjDlg0oLhwX1RVWqr7zh0vypLye0DW/Sv1svFkQivMrdDtYcxV7R+QFvLVaqKDkbeUptFChFVB3YhI1l8Ep5PQtT6p1pi2ufntwX7ywN5R0v2NdtV5w4VAxSB5SLDBefOWgjoY6pg1TBcoDvwaIyCPr9wnD9DKd0=
+  on:
+    repo: moov-io/about
+    tags: true
+  skip_cleanup: true
+
+after_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - make release-push
