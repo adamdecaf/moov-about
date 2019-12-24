@@ -1,0 +1,25 @@
+/**
+ * Moov.io base CSS style
+ */
+
+:root {
+    --moov-blue: rgb(51, 152, 200);  /* #3398C8 */
+    --moov-green: rgb(132, 187, 63); /* #84BB3F */
+    --moov-pink: rgb(206, 36, 97);   /* #CE2461 */
+}
+
+.moov-blue {
+    color: var(--moov-blue);
+}
+
+.moov-green {
+    color: var(--moov-green);
+}
+
+.moov-pink {
+    color: var(--moov-pink);
+}
+
+a {
+    color: var(--moov-blue);
+}
